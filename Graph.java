@@ -1,7 +1,9 @@
 
 /**
- * @author 
- * @version 
+ * Die Klasse "Graph" erstellt eine zweidimensionale Matrix aus Knotenpunkten der Klasse "GraphNode",
+ * wodurch die Gewichte des Graphen gespeichert werden
+ * @author M.Götz
+ * @version 1.2.0 02.12.2015
  */
 public class Graph
 {
@@ -16,11 +18,17 @@ public class Graph
       edges = new double[17][17];    
     }
     
+    /**
+     * Holt den der Indexzahl entsprechenden Knotenpunkt aus dem Array "nodes"
+     */
     public GraphNode getNode(int index)
     {
       return nodes[index];    
     }
     
+    /**
+     * Fügt einen neuen Knotenpunkt im Array "nodes" hinzu
+     */
     public void setNode(GraphNode newNode)
     {
       boolean nodeSet = false;
@@ -36,7 +44,10 @@ public class Graph
           }
     }
     
-     public void addEdge(int nodeStart, int nodeEnd, double distance)
+    /**
+     * Holt den der Indexzahl entsprechenden Knotenpunkt aus dem Array "nodes"
+     */
+    public void addEdge(int nodeStart, int nodeEnd, double distance)
     {
       if (this.edges[nodeStart][nodeEnd] == 0)
                                                 {
@@ -47,13 +58,21 @@ public class Graph
                                                         }
     }
     
+    /**
+     * Gibt das Gewicht zwischen zwei Knotenpunkten zurück, die Angaben der Knotenpunkte erfolgt über
+     * den Namen als String
+     */
     public double getDistance(String locationName, String destinationName)
     {
        
        return this.edges[getIndexNode(locationName)][getIndexNode(destinationName)]; 
     }
     
-    public int getIndexNode(String nodeName)
+   /**
+     * Gibt die Indexzahl eines Knotenpunktes innerhalb des Arrays "nodes" zurück, welcher über den
+     * Namen im Array gesucht wird
+     */
+   public int getIndexNode(String nodeName)
     {
     boolean nodeFound = false;
     int index = -1;
