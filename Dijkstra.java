@@ -9,8 +9,11 @@ import java.util.Collections;
 import java.util.Stack;
 
 /**
- * @author 
- * @version 
+ * Die Klasse "Dijkstra" berechnet mit dem Dijkstra-Algorithmus den kürzesten Weg zwischen einem Start-Knotenpunkt und einem Ziel-Knotenpunkt
+ * innerhalb eines ungerichteten gewichteten Graphen und erstellt eine Zeichenkette mit den Wegpunkten, hier eine Route
+ * zwischen zwei Städten in Deutschland
+ * @author M.Götz 
+ * @version 1.2.0 02.12.2015
  */
 public class Dijkstra
 {
@@ -105,6 +108,9 @@ public class Dijkstra
     
     
 		
+    /**
+     * Berechnet mit dem Dijkstra-Algorithmus den kürzesten Weg zwischen dem Startknoten und dem Endknoten
+     */
     public String berechneWeg(String startPunkt, String endPunkt)
     {
          
@@ -182,6 +188,11 @@ public class Dijkstra
     
     
     
+    
+    /**
+     * Gibt den Wert der Entfernung zum Startpunkt mit einem rekursiven Aufruf, der alle Vorgänger des Knotenpunkts
+     * durchläuft, zurück
+     */
     public double vorgaengerEntfernungLesen(GraphNode lNode)
     {
       double entfernung = 0;
@@ -195,6 +206,11 @@ public class Dijkstra
       return entfernung;
               
     }
+    
+    
+    /**
+     * Gibt die kürzeste Route als Zeichenkette mit den einzelnen Wegpunkten zurück
+     */
     
     public String vorgaengerNamenLesen(GraphNode lNode)
     {
@@ -212,6 +228,11 @@ public class Dijkstra
                 
     }
     
+    
+    /**
+     * Gibt die kürzeste Route als Zeichenkette mit den einzelnen Wegpunkten und der Gesamtlänge in km zurück
+     * 
+     */
     public String getStreckeUndEntfernung(GraphNode lNode)
     {
       vorgaengerNamenLesen(lNode);
@@ -220,13 +241,18 @@ public class Dijkstra
         
     }
     
+    /**
+     * Gibt den Graphen zurück, der im Konstruktor initialisiert wurde
+     */
     public Graph getGraph()
     {
-        
-    return graph;    
+      return graph;    
     }
     
     
+    /**
+     * Erstellt die Wegstrecke über einen rekursiven Aufruf, der alle Vorgänger durchläuft und diese auf einen Stack stapelt
+     */
     public void erstelleWegStreckeStack(GraphNode lNode)
     {
             
@@ -241,16 +267,28 @@ public class Dijkstra
       
     }
     
+    
+    /**
+     * Gibt die Wegstrecke als Stack zurück; diese Methode sollte erst nach der Methode "erstelleWegStreckeStack()"
+     * aufgerufen werden 
+     */
     public Stack<GraphNode> getWegStreckeStack()
     {
         return wegStreckeStack;
     }
     
+    /**
+     * Gibt den End-Knotenpunkt zurück, der in seinen Vorgängern die Wegroute des kürzesten Wegs gespeichtert hat
+     */
     public GraphNode getKuerzesterWeg()
     {
         return kuerzesterWeg;
     }
     
+    
+    /**
+     * Setzt alle wichtigen Variablen zurück und leert die entsprechenden Stacks und Arrays
+     */
     public void resetDijkstra()
     {
       warteSchlange.clear();
