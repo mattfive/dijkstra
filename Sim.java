@@ -31,6 +31,11 @@ import java.awt.TextArea;
 import java.util.Stack;
 
 
+/**
+ * Die Klasse "Sim" stellt eine GUI zur Verfügung, die die Navigations-Simulation durch einen Anwender ermöglicht.
+ * @author M.Götz 
+ * @version 1.2.0 02.12.2015
+ */
 public class Sim {
     private static MyPanel neuesPanel;
            
@@ -44,6 +49,9 @@ public class Sim {
     }
 
           
+    /**
+     * Erstellt die GUI (Frame und Panel)
+     */
     public static void createAndShowGUI() {
         neuesPanel = new MyPanel();
         JFrame f = new JFrame("Routenrechner");
@@ -211,18 +219,28 @@ class MyPanel extends JPanel implements ActionListener{
                 
     }
     
+    /**
+     * Gibt die voreingestellte Fenstergröße zurück
+     */
+    
     public Dimension getPreferredSize() {
         return new Dimension(800,800);
     }
     
       
     
+    /**
+     * Fügt dem Textfeld eine neue Zeichenkette hinzu
+     */
     public void neuerText(String nText)
     {
       textFeld.append(nText);
           
     }
         
+    /**
+     * Führt für den entsprechenden Knopf-Druck verschiedene Anweisungen aus (Route berechnen und Route zurücksetzen)
+     */
     public void actionPerformed(ActionEvent e){
            
       if(e.getSource() == this.calcButton){
@@ -243,4 +261,3 @@ class MyPanel extends JPanel implements ActionListener{
     }
     
 }
-
